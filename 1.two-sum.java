@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /*
  * @lc app=leetcode id=1 lang=java
  *
@@ -33,16 +36,15 @@
 // @lc code=start
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer,Integer> map=new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            int comp=target-nums[i];
+            int comp = target - nums[i];
             if (map.containsKey(comp)) {
-                return new int[] {map.get(comp),i};
+                return new int[] { map.get(comp), i };
             }
-            map.put(nums[i],i);
+            map.put(nums[i], i);
         }
         return null;
     }
 }
 // @lc code=end
-
