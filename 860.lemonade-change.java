@@ -136,29 +136,21 @@ import java.util.Deque;
 // counters of bill5 and bill10 are also OK.
 class Solution {
     public boolean lemonadeChange(int[] bills) {
-        // Deque<Integer> q5 = new ArrayDeque<>();
-        // Deque<Integer> q10 = new ArrayDeque<>();
-
         int cnt5 = 0;
         int cnt10 = 0;
 
         for (int bill : bills) {
             switch (bill) {
                 case 5:
-                    // q5.add(bill);
                     cnt5++;
                     break;
                 case 10:
-                    // if (q5.isEmpty())
                     if (cnt5 <= 0)
                         return false;
-                    // q5.remove();
                     cnt5--;
-                    // q10.add(bill);
                     cnt10++;
                     break;
                 case 20:
-                    // if (q5.isEmpty())
                     if (cnt5 <= 0)
                         return false;
                     if (cnt10 > 0) {
@@ -171,19 +163,6 @@ class Solution {
                             return false;
                         }
                     }
-                    // if (!q10.isEmpty()) {
-                    // q10.remove();
-                    // q5.remove();
-                    // } else {
-                    // int cnt = 0;
-                    // while (!q5.isEmpty() && cnt < 3) {
-                    // q5.remove();
-                    // cnt++;
-                    // }
-                    // if (cnt < 3) {
-                    // return false;
-                    // }
-                    // }
                 default:
                     break;
             }
