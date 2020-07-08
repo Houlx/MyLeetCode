@@ -101,4 +101,18 @@ class Solution {
         return dummy.next;
     }
 }
+
+// 3 while can be written as
+// ListNode m=l1,n=l2;
+// while(m!=null||n!=null){
+// int x=(m!=null)?m.val:0;
+// int y=(n!=null)?n.val:0;
+
+// int preSum=x+y+carry;
+// p.next=new ListNode(preSum%10);
+// carry=(preSum>=10)?1:0;
+// p=p.next;
+// if(m.next!=null){m=m.next;}
+// if(n.next!=null){n=n.next;}
+// }
 // @lc code=end
