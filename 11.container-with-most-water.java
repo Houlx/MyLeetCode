@@ -55,6 +55,7 @@
 //     }
 
 // }
+//Approach inward from left and right sides
 class Solution {
     public int maxArea(int[] height) {
         int water = Integer.MIN_VALUE;
