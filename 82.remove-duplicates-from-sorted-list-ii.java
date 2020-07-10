@@ -63,18 +63,17 @@ class Solution {
             return head;
         }
 
-        ListNode p = head, q = head, pre = dummy;
+        ListNode q = head, pre = dummy;
 
         int flag = 0;
 
-        while (pre != null && p != null && q != null) {
+        while (pre != null && q != null) {
             if (q.next != null && q.next.val == q.val) {
                 flag = 1;
                 q = q.next;
             } else {
                 q = q.next;
-                if (flag != 1)
-                    pre = pre.next;
+                pre = flag == 0 ? pre.next : pre;
                 pre.next = q;
                 flag = 0;
             }
