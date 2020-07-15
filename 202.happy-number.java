@@ -1,5 +1,5 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
  * @lc app=leetcode id=202 lang=java
@@ -48,17 +48,18 @@ class Solution {
         if (n == 1)
             return true;
 
-        Map<Integer, Integer> map = new HashMap<>();
+        // Map<Integer, Integer> map = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
 
         int sum = powSum(n);
         while (true) {
             if (sum == 1) {
                 return true;
             } else {
-                if (map.containsKey(sum)) {
+                if (set.contains(sum)) {
                     return false;
                 } else {
-                    map.put(sum, sum);
+                    set.add(sum);
                     sum = powSum(sum);
                 }
             }
@@ -66,9 +67,9 @@ class Solution {
     }
 
     public int powSum(int n) {
-        int result = 0;
+        int result = 0, digit = 0;
         while (n > 0) {
-            int digit = n % 10;
+            digit = n % 10;
             result += digit * digit;
             n /= 10;
         }
