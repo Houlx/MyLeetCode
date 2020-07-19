@@ -83,21 +83,36 @@ import java.util.Set;
 //     }
 // }
 
+// public class Solution {
+//     public boolean hasCycle(ListNode head) {
+//         if (head == null || head.next == null)
+//             return false;
+//         Set<ListNode> set = new HashSet<>();
+//         ListNode p = head;
+//         while (p != null) {
+//             if (set.contains(p)) {
+//                 return true;
+//             } else {
+//                 set.add(p);
+//             }
+//             p = p.next;
+//         }
+//         return false;
+//     }
+// }
 public class Solution {
     public boolean hasCycle(ListNode head) {
         if (head == null || head.next == null)
             return false;
-        Set<ListNode> set = new HashSet<>();
-        ListNode p = head;
-        while (p != null) {
-            if (set.contains(p)) {
-                return true;
-            } else {
-                set.add(p);
-            }
-            p = p.next;
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (slow != fast) {
+            if (fast == null || fast.next == null)
+                return false;
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        return false;
+        return true;
     }
 }
 // @lc code=end
