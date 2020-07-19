@@ -43,15 +43,28 @@
  */
 
 // @lc code=start
+// class Solution {
+//     public int maxProfit(int[] prices) {
+//         int max = 0;
+//         for (int i = 0; i < prices.length; i++) {
+//             for (int j = i + 1; j < prices.length; j++) {
+//                 max = (prices[j] - prices[i]) > max ? (prices[j] - prices[i]) : max;
+//             }
+//         }
+//         return max;
+//     }
+// }
 class Solution {
     public int maxProfit(int[] prices) {
-        int max = 0;
-        for (int i = 0; i < prices.length; i++) {
-            for (int j = i + 1; j < prices.length; j++) {
-                max = (prices[j] - prices[i]) > max ? (prices[j] - prices[i]) : max;
-            }
+        int minPrice = Integer.MAX_VALUE;
+        int maxProf = 0;
+        for (int p : prices) {
+            if (p < minPrice)
+                minPrice = p;
+            if (p - minPrice > maxProf)
+                maxProf = p - minPrice;
         }
-        return max;
+        return maxProf;
     }
 }
 // @lc code=end
