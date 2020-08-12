@@ -1,3 +1,11 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /*
  * @lc app=leetcode id=692 lang=java
  *
@@ -55,7 +63,40 @@
 // @lc code=start
 class Solution {
     public List<String> topKFrequent(String[] words, int k) {
+        Map<String, Integer> map = new HashMap<>();
 
+        Comparator<String> comparator = new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+
+                int res = map.get(o2) - map.get(o1);
+                if (res == 0) {
+                    res = o1.compareTo(o2);
+                }
+
+                return res;
+            }
+        };
+        Queue<String> queue = new PriorityQueue<>(comparator);
+
+        for (String word : words) {
+            if (!map.containsKey(word)) {
+                map.put(word, 1);
+            } else {
+                map.put(word, map.get(word) + 1);
+            }
+        }
+
+        for (String word : map.keySet()) {
+            queue.add(word);
+        }
+
+        List<String> res = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            res.add(queue.poll());
+        }
+
+        return res;
     }
 }
 // @lc code=end
