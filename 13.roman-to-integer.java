@@ -98,12 +98,11 @@ class Solution {
             }
         };
 
-        int sum = 0;
-
         int num = 0;
         int len = s.length();
         int pre = map.get(s.charAt(len - 1));
-        int last = pre;
+
+        int sum = pre;
 
         for (int i = len - 2; i >= 0; i--) {
             num = map.get(s.charAt(i));
@@ -114,7 +113,7 @@ class Solution {
             }
             pre = num;
         }
-        return sum + last;
+        return sum;
     }
 }
 // @lc code=end
