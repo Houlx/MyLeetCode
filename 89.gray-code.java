@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * @lc app=leetcode id=89 lang=java
  *
@@ -56,8 +59,11 @@
 // @lc code=start
 class Solution {
     public List<Integer> grayCode(int n) {
-        
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < (1 << n); i++) {
+            res.add(i ^ (i >> 1));
+        }
+        return res;
     }
 }
 // @lc code=end
-
