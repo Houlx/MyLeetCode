@@ -50,7 +50,26 @@
 
 class Solution {
     public ListNode swapPairs(ListNode head) {
-
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) {
+            return head;
+        }
+        ListNode fakeHead = new ListNode(-1, head);
+        ListNode h = fakeHead, a = head, b = head.next;
+        while (b != null) {
+            a.next = b.next;
+            b.next = a;
+            h.next = b;
+            h = a;
+            a = a.next;
+            if (a != null)
+                b = a.next;
+            else
+                b = null;
+        }
+        return fakeHead.next;
     }
 }
 // @lc code=end
