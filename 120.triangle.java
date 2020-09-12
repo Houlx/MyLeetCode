@@ -42,16 +42,16 @@ import java.util.List;
 class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
         int len = triangle.size();
-        int[][] cost = new int[len][len];
+        int[] cost = new int[len];
         for (int i = 0; i < len; i++) {
-            cost[len - 1][i] = triangle.get(len - 1).get(i);
+            cost[i] = triangle.get(len - 1).get(i);
         }
         for (int i = len - 2; i >= 0; i--) {
             for (int j = 0; j < triangle.get(i).size(); j++) {
-                cost[i][j] = triangle.get(i).get(j) + Math.min(cost[i + 1][j], cost[i + 1][j + 1]);
+                cost[j] = triangle.get(i).get(j) + Math.min(cost[j], cost[j + 1]);
             }
         }
-        return cost[0][0];
+        return cost[0];
     }
 }
 // @lc code=end
